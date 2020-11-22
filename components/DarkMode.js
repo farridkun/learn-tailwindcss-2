@@ -160,10 +160,34 @@ function DarkMode() {
                 {data.description}
               </div>
             </div>
-            <div className="flex justify-between align-bottom px-10 py-6 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-900 dark:text-gray-200">
+            <div className="flex justify-between items-center px-10 py-6 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-900 dark:text-gray-200">
               <div>IDR {data.price}0,00</div>
-              <div className="select-all px-4 rounded-lg bg-gray-200 text-gray-900 dark:bg-gray-500 dark:text-gray-200">
-                {data.material}
+              <div className="px-2 py-2 rounded-lg tracking-widest hover:transition-shadow hover:shadow-xl duration-300 ease-in-out hover:bg-red-200 border-2 border-gray-900 dark:border-gray-500 text-gray-900 dark:text-gray-200 dark:hover:text-gray-500 grid grid-cols-5 gap-4">
+                <div className="select-all col-span-4">{data.material}</div>
+                <div className="text-gray-900 dark:text-gray-500">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-copy"
+                  >
+                    <rect
+                      x="9"
+                      y="9"
+                      width="13"
+                      height="13"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
