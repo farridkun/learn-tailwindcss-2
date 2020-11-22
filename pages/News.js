@@ -76,7 +76,7 @@ function News() {
                 <h1 className="h-4 rounded w-2/4 bg-gray-400 dark:bg-gray-900 text-2xl font-bold text-gray-800 dark:text-white mb-6"></h1>
                 <div className="h-8 rounded w-5/4 bg-gray-400 dark:bg-gray-900 leading-relaxed text-gray-500 dark:text-gray-300 text-lg"></div>
               </div>
-              <div className="px-10 py-6 bg-white dark:bg-gray-900 border-t border-gray-200 ">
+              <div className="px-10 py-6 bg-gray-200 dark:bg-gray-900 border-t border-gray-200 ">
                 <div className="h-4 rounded w-1/4 bg-gray-400 dark:bg-gray-800 px-6 dark:border-gray-900 dark:text-gray-200"></div>
               </div>
             </div>
@@ -90,7 +90,7 @@ function News() {
     <div>
       <div className="bg-white dark:bg-gray-800 shadow p-4 rounded-lg my-6 flex items-center justify-between">
         <div className="font-semibold text-lg text-gray-800 dark:text-white">
-          News of technology 📰 👩‍💻
+          Berita seputar teknologi 📰 👩‍💻
         </div>
         <div>
           <Switch.Group as="div" className="flex items-center space-x-4">
@@ -124,16 +124,29 @@ function News() {
       {datas.map((data, i) => (
         <div key={i}>
           <div className="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden my-6">
-            <div className="px-10 py-8">
-              <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
-                {data.title}
-              </h1>
-              <div className="leading-relaxed text-gray-500 dark:text-gray-300 text-lg">
-                {data.description}
+            <div className="md:flex rounded-xl p-8 md:p-0">
+              <img
+                className="w-32 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto"
+                src={data.urlToImage}
+                alt={data.title}
+                width="384"
+                height="512"
+              />
+              <div className="pt-6 md:p-8 text-center md:text-left space-y-4">
+                <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
+                  {data.title}
+                </h1>
+                <blockquote>
+                  <p className="leading-relaxed text-gray-500 dark:text-gray-300 text-lg">
+                    {data.description}
+                  </p>
+                </blockquote>
               </div>
             </div>
-            <div className="flex justify-between items-center px-10 py-6 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-900 dark:text-gray-200">
-              <div>{data.source.name}</div>
+            <div className="flex justify-between items-center px-10 py-6 bg-gray-200 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-900 dark:text-gray-200">
+              <div className="tracking-widest font-light text-md">
+                Sumber <strong>{data.source.name}</strong>
+              </div>
               <div className="px-2 py-2 rounded-lg tracking-widest hover:transition-shadow hover:shadow-xl duration-300 ease-in-out hover:bg-red-200 border-2 border-gray-900 dark:border-gray-500 text-gray-900 dark:text-gray-200 dark:hover:text-gray-500 grid grid-cols-5 gap-4">
                 <div className="select-all col-span-4">{data.author}</div>
                 <div className="text-gray-900 dark:text-gray-500">
