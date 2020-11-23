@@ -126,7 +126,7 @@ function News() {
           <div className="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden my-6">
             <div className="md:flex rounded-xl p-8 md:p-0">
               <img
-                className="w-32 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto"
+                className="w-64 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto"
                 src={data.urlToImage}
                 alt={data.title}
                 width="384"
