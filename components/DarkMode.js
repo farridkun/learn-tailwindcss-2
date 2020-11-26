@@ -26,9 +26,17 @@ function DarkMode() {
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
-      document
-        .querySelector('html')
-        .classList.add(localStorage.getItem('theme'));
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.querySelector('html').classList.add('dark');
+      } else {
+        document.querySelector('html').classList.remove('dark');
+      }
+
+      localStorage.removeItem('theme');
 
       axios.get(urlAPI).then((res) => {
         setDatas(res.data);
@@ -151,8 +159,8 @@ function DarkMode() {
       </div>
       {datas.map((data) => (
         <div key={data.id}>
-          <div className="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden my-6">
-            <div className="px-10 py-8">
+          <div className="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden my-6 md:my-4">
+            <div className="px-10 py-8 md:px-8 md:py-6">
               <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
                 {data.name}
               </h1>
@@ -160,9 +168,9 @@ function DarkMode() {
                 {data.description}
               </div>
             </div>
-            <div className="flex justify-between items-center px-10 py-6 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-900 dark:text-gray-200">
+            <div className="flex justify-between items-center px-10 py-6 md:px-4 md:py-2 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-900 dark:text-gray-200">
               <div>IDR {data.price}0,00</div>
-              <div className="px-2 py-2 rounded-lg tracking-widest hover:transition-shadow hover:shadow-xl duration-300 ease-in-out hover:bg-red-200 border-2 border-gray-900 dark:border-gray-500 text-gray-900 dark:text-gray-200 dark:hover:text-gray-500 grid grid-cols-5 gap-4">
+              <div className="px-2 py-2 md:mx-1 md:my-1 rounded-lg tracking-widest hover:transition-shadow hover:shadow-xl duration-300 ease-in-out hover:bg-red-200 border-2 border-gray-900 dark:border-gray-500 text-gray-900 dark:text-gray-200 dark:hover:text-gray-500 grid grid-cols-5 gap-4">
                 <div className="select-all col-span-4">{data.material}</div>
                 <div className="text-gray-900 dark:text-gray-500">
                   <svg
@@ -172,10 +180,10 @@ function DarkMode() {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="feather feather-copy"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="feather feather-copy"
                   >
                     <rect
                       x="9"
